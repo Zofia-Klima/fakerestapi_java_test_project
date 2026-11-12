@@ -1,53 +1,54 @@
-# Wymagania
+# Requirements
 
-Projekt wymaga zainstalowanej Javy i Google Chrome.
+The project requires Java and Google Chrome to be installed.
 
-Biblioteki zewnętrzne znajdują się w katalogu `lib`.
+External libraries are located in the `lib` directory.
 
-Są to m.in.:
+These include:
 
 - Gson
 - Selenium WebDriver
-- zależności wymagane przez Selenium
+- dependencies required by Selenium
 
-## Kompilacja
+## Compilation
 
-Aby skompilować projekt w systemie Windows, należy wykonać:
+To compile the project on Windows, run the following:
 
 ``` bash
 javac -cp ".;lib/*" Main.java Author.java AuthorThread.java AuthorApiClient.java AuthorUiTest.java
 ```
 
-## Uruchomienie
+## Running the Project
 
-Aby uruchomić projekt:
+To run the project:
 
 ``` bash
 java -ea -cp ".;lib/*" Main
 ```
-Opcja `-ea` włącza asercje Javy
+The `-ea` option enables Java assertions
 
-## Struktura projektu
+## Project Structure
 
-- `Main.java` - tworzy autorów, uruchamia cztery równoległe wątki i wykonuje końcowe porównanie danych.
-- `Author.java` - model danych autora.
-- `AuthorThread.java` - wykonuje operacje POST i GET dla pojedynczego autora.
-- `AuthorApiClient.java` - pobiera listę wszystkich autorów bezpośrednio z API.
-- `AuthorUiTest.java` - obsługuje Swagger UI za pomocą Selenium i pobiera dane autorów wyświetlone w UI.
-- `lib/` - zawiera Gson, Selenium WebDriver i wymagane zależności.
+- `Main.java` - creates authors, starts four parallel threads, and performs a final data comparison.
+- `Author.java` - author data model.
+- `AuthorThread.java` - performs POST and GET operations for a single author.
+- `AuthorApiClient.java` - retrieves a list of all authors directly from the API.
+- `AuthorUiTest.java` - interacts with Swagger UI using Selenium and retrieves author data displayed in the UI.
+- `lib/` - contains Gson, Selenium WebDriver, and required dependencies.
 
 ## Selenium
 
-Prosty kod Selenium wykorzystany jest z własnej inicjatywy ze względu na punkt 3 zadania:
+Simple Selenium code is used due to the required step by the project:
 >(...)
->3. Następnie otwórz UI tej samej strony i porównaj autorów wyświetlanych w UI z danymi pobranymi z API.
+>Next, open the UI of the same page and compare the authors displayed in the UI with the data retrieved from the API.
 
-Domyślam się, że w zamyśle nie było otworzenie UI przy użyciu Selenium, jednak zrobiłam to w ramach przetestowania jak działa Selenium w Javie.
+I assume the intention was not to open the UI using Selenium, but I did so to present how Selenium works in Java.
 
-Kod zawarty w pliku AuthorUiTest.java otwiera stronę https://fakerestapi.azurewebsites.net/index.html, rozwija endpoint GET /api/v1/Authors, następnie klika w przyciski "Try it out" oraz "Execute", oraz zapisuje wyświetlone ciało odpowiedzi w zmiennej responseBody.
+The code in the AuthorUiTest.java file opens the page https://fakerestapi.azurewebsites.net/index.html, makes a GET request to the endpoint /api/v1/Authors, then clicks the “Try it out” and “Execute” buttons, and stores the response body in the variable responseBody.
 
-Dzięki temu mogę porównać dane pobrane bezpośrednio przez żądanie GET z danymi zwróconymi przez ten sam endpoint uruchomiony w Swagger UI.
+This allows me to compare the data retrieved directly via a GET request with the data returned by the same endpoint when run in Swagger UI.
 
-## Dodatkowe uwagi
+## Additional Notes
 
-Komentarze w kodzie zostały napisane w języku angielskim, w celu zachowania dobrej praktyki oraz spójności w kodzie.
+The comments in the code are written in English to follow best practices and maintain consistency in the code.
+The project was originally created in Polish language for the tester internship. 
